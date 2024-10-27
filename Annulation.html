@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: linear-gradient(to left,#242424,white);
+        }
+        table{
+            margin: auto;
+
+        }
+        .in{
+            font-weight:bold;
+            background-color: #994c22;
+            padding: 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>Numero de Reservation:</td>
+                <td><input type="number" id="nbr" required ></td>
+            </tr>
+            <tr>
+                <td>Nom</td>
+                <td><input type="text"  id="nn" required ></td>
+            </tr><tr>
+                <td>Prenom:</td>
+                <td><input type="text" id="np" required ></td>
+            </tr>
+            <tr>
+                <td>Tel</td>
+                <td><input type="number" id="tel" required ></td>
+            </tr>
+            <tr>
+                <td><input class="in" type="submit" value="Annuler la Reserrvation"onclick="verifa()"></td>
+                <td><input class="in" type="reset" value="Effacer" ></td>
+            </tr>
+        </table>
+    </form>
+    <script src="scripts.js"></script>
+</body>
+</html>

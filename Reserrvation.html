@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: linear-gradient(to left, aqua, white);
+        }
+        table {
+            margin: auto;
+            text-align: center;
+        }
+        .in {
+            background-color: #242424;
+            color: #994c22;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        #num_res {
+            display: block; /* Ensure the label is displayed as a block */
+            margin-bottom: 20px; /* Add some space below the label */
+            text-align: center; /* Center the label text */
+            font-size: 1.2em; /* Increase the font size for visibility */
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="submit.php" onsubmit="return verifa();">
+        <label for="num_res" id="num_res">Numéro de Réservation : </label>
+        <table>
+            <tr>
+                <td><label for="nn">Nom</label></td>
+                <td><input type="text" id="nn" name="nom" required></td>
+            </tr>
+            <tr>
+                <td><label for="pre">Prénom</label></td>
+                <td><input type="text" id="pre" name="prenom" required></td>
+            </tr>
+            <tr>
+                <td><label for="tel">Tel:</label></td>
+                <td><input type="tel" id="tel" name="tel" required></td>
+            </tr>
+            <tr>
+                <td><label for="em">Email</label></td>
+                <td><input type="email" id="em" name="email" required></td>
+            </tr>
+            <tr>
+                <td><label for="da">Date d'arrivée</label></td>
+                <td><input type="date" id="da" name="date_arrivee" required></td>
+            </tr>
+            <tr>
+                <td><label for="nbp">Nombres de personnes:</label></td>
+                <td><input type="number" id="nbp" name="nombres_personnes" min="1" required></td>
+            </tr>
+            <tr>
+                <td><label for="nbc">Nombres de chambres</label></td>
+                <td><input type="number" id="nbc" name="nombres_chambres" min="1" required></td>
+            </tr>
+            <tr>
+                <td><input class="in" type="submit" value="Enregistrer"></td>
+                <td><input class="in" type="reset" value="Annuler"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function verifa() {
+            let nbr = document.getElementById("nbr")?.value; // Optional chaining in case it doesn't exist
+            let nn = document.getElementById("nn").value; // Name
+            let np = document.getElementById("pre").value; // Prenom
+            let tel = document.getElementById("tel").value; // Telephone
+            let test = true;
+
+            if (!alpha(nn) || !alpha(np)) {
+                test = false;
+                alert("Vérifiez les champs du nom et du prénom.");
+                console.log("Erreur dans la partie nom et prénom.");
+                return false;
+            }
+
+            const x = Math.floor(Math.random() * 9000000000) + 1000000000;
+            document.getElementById("num_res").innerText = "Numéro de Réservation : " + x;
+
+            return true; // Return true to allow form submission if needed
+        }
+
+        function alpha(ch) {
+            if (ch.length == 0) {
+                return false; // Return false if the input is empty
+            }
+            let ok = true;
+            for (let i = 0; i < ch.length; i++) {
+                let char = ch[i].toUpperCase();
+                if (!(char >= "A" && char <= "Z")) {
+                    ok = false; // Set ok to false if a character is not between A and Z
+                    break;
+                }
+            }
+            return ok; // Return true if all characters are valid
+        }
+    </script>
+</body>
+</html>
